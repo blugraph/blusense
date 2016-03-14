@@ -7,9 +7,10 @@
 #
 ######################################################################
 
-SW_DIR="/home/arkbg/dev/github/bg"
 RUN_DIR="/home/arkbg/dev"
-BKUP_DIR="/home/arkbg/dev/bkup"
+SW_DIR="$RUN_DIR/devsrc"
+BKUP_DIR="$RUN_DIR/bkup"
+LOG_DIR="$RUN_DIR/logs"
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
