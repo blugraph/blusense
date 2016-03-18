@@ -11,6 +11,13 @@ RUN_DIR="/home/arkbg/dev"
 SW_DIR="$RUN_DIR/devsrc"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
+   
+# Files to be copied to RUN_DIR 
+file1="sense.py"
+file2="sendfile.py"
+file3="sw_update.sh"
+file4="check_update.sh"
+file5="server_stat.sh"
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
@@ -52,11 +59,6 @@ function configure_and_make() {
 function wait_and_copy() {
     now=`date +"%m_%d_%Y"`
     #
-    file1="sense_2.py"
-    file2="sendfile_2.py"
-    file3="sw_update.sh"
-    file4="github_check_update.sh"
-    file5="server_stat.sh"
     echo "Backing up current files.."
     cp "$RUN_DIR/$file1" "$BKUP_DIR/$file1_$now"
     cp "$RUN_DIR/$file2" "$BKUP_DIR/$file2_$now"
@@ -86,4 +88,4 @@ wait_and_copy
 
 # Record the time so that I can see when was the last time I updated
 # all of these programs.
-echo "$(date)" > "$RUN_DIR/Update-Programs-Timestamp.txt"
+#echo "$(date)" > "$RUN_DIR/Update-Programs-Timestamp.txt"
