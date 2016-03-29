@@ -23,7 +23,8 @@ bus = smbus.SMBus(1)
 # config params
 loop_time = 9.995
 num_samp_avg = 6
-dev_ID = "D1004"
+#dev_ID = "D1004"
+dev_ID = os.environ["BGDEV"]
 BACKLOG_BUFF_LEN = 59
 #SERVER_ADDR = "172.18.53.42:81"
 SERVER_ADDR = "52.74.191.39"
