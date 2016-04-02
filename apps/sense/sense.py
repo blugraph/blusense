@@ -8,6 +8,9 @@ import serial
 import os
 from pi_sht1x import SHT1x
 import cPickle as pickle
+import glob
+#from glob import glob
+from os import rename
 
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
@@ -21,13 +24,15 @@ time.sleep(1)
 bus = smbus.SMBus(1)
 
 # config params
-loop_time = 9.995
+loop_time = 1
 num_samp_avg = 5
-# dev_ID = "D1004"
-dev_ID = os.environ["BGDEV"]
+dev_ID = "D1101"
+#dev_ID = os.getenv("HOME")
+#print dev_ID
+#dev_ID = os.environ["BGDEV"]
 BACKLOG_BUFF_LEN = 59
-# SERVER_ADDR = "172.18.53.42:81"
-SERVER_ADDR = "52.74.191.39"
+SERVER_ADDR = "172.18.53.42:81"
+#SERVER_ADDR = "52.74.191.39"
 RUN_DIR = "/home/arkbg/dev/"
 
 templ = []
@@ -98,12 +103,15 @@ payload["time"] = curr_time
 
 print curr_time + " -> Send Data to server: " + json.dumps(payload)
 try:
-    svc_url = "http://" + SERVER_ADDR + "/BluIEQ/sensordata.php"
-    r1 = requests.put(svc_url, data=json.dumps(payload), timeout=0.1)
+    svc_url = "http://" + SERVER_ADDR + "/BluIEQ/sensordata.php" + "?id=" + dev_ID
+    data2_j = "[" + json.dumps(payload) + "]"
+    r1 = requests.put(svc_url, data2_j, timeout=0.1)
+    #r1 = requests.put(svc_url, data=json.dumps(payload), timeout=0.1)
     print r1.status_code
     # print r1.content
 except:
     print "Network Failed Error:"
+    #print err
     network_status = 0
 
 # If there was network failure, save this object to file.
@@ -117,8 +125,9 @@ if network_status == 0:
         os.makedirs(dir_name)
         print "Directory Created"
 
-    except OSError as x:
-        print "Directory not created, err: " + x
+    except OSError as err:
+        print "Directory not created, err: "
+        print err
         if os.path.exists(dir_name):
             print "Already directory exists"
         else:
@@ -126,6 +135,7 @@ if network_status == 0:
 
     # For the same hour, append to existing file. New file for new hour.
     base_filename = "local_" + time.strftime("%Y-%m-%d_%H_%M")
+    #base_filename = "local_" + time.strftime("%Y-%m-%d_%H")
     ext = ".current"
     abs_file_name = os.path.join(dir_name, base_filename) + ext
     print abs_file_name
@@ -133,17 +143,20 @@ if network_status == 0:
     # Rename any .current files to .dat
     try:
         if not os.path.exists(abs_file_name):
-            from glob import glob
-            from os import rename
-
+            print "New file"
             os.chdir(dir_name)
-            for file in glob.glob("*.current"):
+            for file in glob.glob('*.current'):
                 print(file)
                 rename(file, file.replace(".current", ".dat", 1))
+    except Exception as err:
+        print "File opreration error: "
+        print err
+        
+    try:
+        localfile = open(abs_file_name, 'a')
+        pickle.dump(payload, localfile, pickle.HIGHEST_PROTOCOL)  #
+    except Exception as err:
+        print "Local file write error: "
+        print err
 
-        localfile = open(abs_file_name, 'wa')
-    except Exception as x:
-        print "File opreration error: " + x
-
-    pickle.dump(payload, localfile, pickle.HIGHEST_PROTOCOL)  #
 GPIO.cleanup()
