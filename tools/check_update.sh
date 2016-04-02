@@ -24,7 +24,7 @@ if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
-    $RUN_DIR/sw_update.sh
+    $RUN_DIR/sw_update.sh $1
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
 else
