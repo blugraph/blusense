@@ -12,7 +12,6 @@ SW_DIR="$RUN_DIR/devsrc/$1"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
    
-#
 # Files to be copied to RUN_DIR 
 file1="sense.py"
 file2="sendfile.py"
