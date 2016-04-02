@@ -12,8 +12,8 @@ BKUP_DIR="/home/arkbg/dev/bkup"
 # http://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 # Before checking for updates, do a remote update.
 cd "$SW_DIR/$1" \
-    && git checkout master \     
-    && git remote update     
+    && git checkout master \
+    && git remote update
 #git remote update
 
 LOCAL=$(git rev-parse @{0})
