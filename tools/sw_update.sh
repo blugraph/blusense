@@ -8,7 +8,7 @@
 ######################################################################
 
 RUN_DIR="/home/arkbg/dev"
-SW_DIR="$RUN_DIR/devsrc"
+SW_DIR="$RUN_DIR/devsrc/$1"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
    
@@ -34,7 +34,7 @@ fi
 # sub-directory in $SW_DIR.
 function checkout_latest_master() {
     echo "Updating $1"
-    cd "$SW_DIR/$1" \
+    cd "$SW_DIR" \
         && git pull origin     
 #        && git pull origin     \
 #        && git fetch origin     \

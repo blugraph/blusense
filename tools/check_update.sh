@@ -4,14 +4,15 @@
 #
 
 RUN_DIR="/home/arkbg/dev"
-SW_DIR="$RUN_DIR/devsrc"
+SW_DIR="$RUN_DIR/devsrc/$1"
+TOOLS_DIR="$SW_DIR/tools"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
 BKUP_DIR="/home/arkbg/dev/bkup"
 
 # http://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 # Before checking for updates, do a remote update.
-cd "$SW_DIR/$1" \
+cd "$SW_DIR" \
     && git checkout master \
     && git remote update
 #git remote update
@@ -24,7 +25,7 @@ if [ $LOCAL = $REMOTE ]; then
     echo "Up-to-date"
 elif [ $LOCAL = $BASE ]; then
     echo "Need to pull"
-    $RUN_DIR/sw_update.sh $1
+    $TOOLS_DIR/sw_update.sh "$1"
 elif [ $REMOTE = $BASE ]; then
     echo "Need to push"
 else
