@@ -9,7 +9,6 @@ import os
 from pi_sht1x import SHT1x
 import cPickle as pickle
 import glob
-
 #from glob import glob
 from os import rename
 
