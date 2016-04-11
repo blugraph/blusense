@@ -10,7 +10,27 @@ IDLINE="SVCSENSOR"
 STATUS_URL="http://52.74.191.39/BluIEQ/getstatus.php"
 
 # Check server status, also used as HTTP keepalive for server. key=val
-curl $STATUS_URL| sed 's/\(.*\)=\(.*\)/\1 \2/' | while read key val; do echo $key#$val; done
+#curl $STATUS_URL| sed 's/\(.*\)=\(.*\)/\1 \2/' | while read key val; do echo $key#$val; done
+
+declare -A keyarray
+declare -A valarray
+
+dataFromServer=$(curl $STATUS_URL)
+echo "$dataFromServer"
+tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
+echo "$tokens"
+index=0
+while read key val
+do 
+    echo $key#$val
+    keyarray[$index]=$key
+    valarray[$index]=$val
+    index=$(($index+1))
+done <<< $tokens
+
+# Currently only one key-val pair expected.
+key=${keyarray[0]}
+val=${valarray[0]}
 
 function change_wifi_pass() {
     # keep backup of current supplicant file.
@@ -26,13 +46,14 @@ function change_wifi_pass() {
 }
 
 
-if ["$key" == "pw"]; then
+if [ $key == "pw" ]; then
     # pass change.
+    #echo "Change to pass $val"
     change_wifi_pass "$val"
     # restart connection (will be done by the reset_wifi.sh later). 
     #It will take some time for pass change to happen on server side.
-elif ["$key" == "hello"]; then
-    #echo "Hello"
+elif [ $key == "msg" ]; then
+    echo "Hello#$val"
 else
     echo "Unknown key."
 fi
