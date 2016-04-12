@@ -42,7 +42,9 @@ function change_wifi_pass() {
     # http://stackoverflow.com/questions/9063730/how-to-change-a-word-in-a-file-with-linux-shell-script
     # AWK option, http://www.unix.com/unix-for-dummies-questions-and-answers/37430-replace-password-field-using-ed-sed.html
     #sed -i -r "/BGWIFI/I{n; s/.*/\    psk="$1"/}" /etc/wpa_supplicant/wpa_supplicant.conf
-    sed -i -r "/$IDLINE/I{n; s/.*/\    password="$1"/}" /etc/wpa_supplicant/wpa_supplicant.conf
+    sed -i -r "/$IDLINE/I{n; s/.*/\        password="$1"/}" /etc/wpa_supplicant/wpa_supplicant.conf
+    # Remove the carriage return character, if that was introduced in the above replacement.
+    sed -i 's/^M//g' /etc/wpa_supplicant/wpa_supplicant.conf
 }
 
 
