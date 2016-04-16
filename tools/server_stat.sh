@@ -18,11 +18,11 @@ declare -A valarray
 dataFromServer=$(curl $STATUS_URL)
 echo "$dataFromServer"
 tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
-echo "$tokens"
+#echo "$tokens"
 index=0
 while read key val
 do 
-    echo $key#$val
+    #echo $key#$val
     keyarray[$index]=$key
     valarray[$index]=$val
     index=$(($index+1))
@@ -42,7 +42,8 @@ function change_wifi_pass() {
     # http://stackoverflow.com/questions/9063730/how-to-change-a-word-in-a-file-with-linux-shell-script
     # AWK option, http://www.unix.com/unix-for-dummies-questions-and-answers/37430-replace-password-field-using-ed-sed.html
     #sed -i -r "/BGWIFI/I{n; s/.*/\    psk="$1"/}" /etc/wpa_supplicant/wpa_supplicant.conf
-    sed -i -r "/$IDLINE/I{n; s/.*/\        password="$1"/}" /etc/wpa_supplicant/wpa_supplicant.conf
+    #pwclr=$(sed 's/^M//g' <<< $1)
+    sed -i -r "/$IDLINE/I{n; s/.*/\        password="\"$1\""/}" /etc/wpa_supplicant/wpa_supplicant.conf
     # Remove the carriage return character, if that was introduced in the above replacement.
     sed -i 's/^M//g' /etc/wpa_supplicant/wpa_supplicant.conf
 }
