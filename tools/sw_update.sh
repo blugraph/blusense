@@ -60,11 +60,11 @@ function wait_and_copy() {
     now=`date +"%m_%d_%Y"`
     #
     echo "Backing up current files.."
-    cp "$RUN_DIR/$file1" "$BKUP_DIR/$file1_$now"
-    cp "$RUN_DIR/$file2" "$BKUP_DIR/$file2_$now"
-    cp "$RUN_DIR/$file3" "$BKUP_DIR/$file3_$now"
-    cp "$RUN_DIR/$file4" "$BKUP_DIR/$file4_$now"
-    cp "$RUN_DIR/$file5" "$BKUP_DIR/$file5_$now"
+    cp "$RUN_DIR/$file1" "$BKUP_DIR/$file1-$now"
+    cp "$RUN_DIR/$file2" "$BKUP_DIR/$file2-$now"
+    cp "$RUN_DIR/$file3" "$BKUP_DIR/$file3-$now"
+    cp "$RUN_DIR/$file4" "$BKUP_DIR/$file4-$now"
+    cp "$RUN_DIR/$file5" "$BKUP_DIR/$file5-$now"
     sleep 5s
     echo "Copying files to RUN directory.."
     cp "$SW_DIR/apps/sense/$file1" "$RUN_DIR/."
@@ -79,13 +79,3 @@ checkout_latest_master "apps"
 checkout_latest_master "tools"
 #checkout_latest_master "web"
 wait_and_copy
-
-# Remove my home /tmp directory created by some of the installation
-# processes above.
-#if [ -d "/home/arkbg/dev/tmp" ]; then
-#    rm -rf "/home/arkbg/dev/tmp"
-#fi
-
-# Record the time so that I can see when was the last time I updated
-# all of these programs.
-#echo "$(date)" > "$RUN_DIR/Update-Programs-Timestamp.txt"
