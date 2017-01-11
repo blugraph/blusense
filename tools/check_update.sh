@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Usage: check_update.sg bgsense
+# Usage: check_update.sh blusense
 #
 
 RUN_DIR="/home/arkbg/dev"
