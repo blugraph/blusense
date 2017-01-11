@@ -1,9 +1,6 @@
 import os
 import time
-<<<<<<< HEAD
-=======
 import json
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
 from os import listdir
 from os.path import isfile, join
 import glob, os
@@ -32,21 +29,6 @@ if len(file_list) == 0:
 
 for k in range(0, len(file_list)):
     try:
-<<<<<<< HEAD
-        print file_list[k]
-        with open(file_list[k], 'r') as input:
-            print "File opened for reading."
-            payload = pickle.load(input)
-    except:
-        print "The file can not be read"
-
-    try:
-        svc_url = "http://" + SERVER_ADDR + "/BluIEQ/sensordata.php"
-        r1 = requests.put(svc_url, data=json.dumps(payload), timeout=0.1)
-        print r1.status_code
-        try:
-            os.remove(file_list[k])
-=======
 	data2 = []
         print file_list[k]
         with open(file_list[k], 'r') as input:
@@ -74,7 +56,6 @@ for k in range(0, len(file_list)):
         try:
             #os.remove(file_list[k])
 	    print "Not writing here"	
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
         except OSError, e:  ## if failed, report it back to the user ##
             print ("Error: %s - %s." % (e.filename, e.strerror))
 

@@ -7,11 +7,6 @@
 #
 ######################################################################
 
-<<<<<<< HEAD
-SW_DIR="/home/arkbg/dev/github/bg"
-RUN_DIR="/home/arkbg/dev"
-BKUP_DIR="/home/arkbg/dev/bkup"
-=======
 RUN_DIR="/home/arkbg/dev"
 SW_DIR="$RUN_DIR/devsrc/$1"
 BKUP_DIR="$RUN_DIR/bkup"
@@ -23,7 +18,6 @@ file2="sendfile.py"
 #file3="sw_update.sh"
 file4="check_update.sh"
 file5="server_stat.sh"
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
@@ -40,11 +34,7 @@ fi
 # sub-directory in $SW_DIR.
 function checkout_latest_master() {
     echo "Updating $1"
-<<<<<<< HEAD
-    cd "$SW_DIR/$1" \
-=======
     cd "$SW_DIR" \
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
         && git pull origin     
 #        && git pull origin     \
 #        && git fetch origin     \
@@ -69,35 +59,17 @@ function configure_and_make() {
 function wait_and_copy() {
     now=`date +"%m_%d_%Y"`
     #
-<<<<<<< HEAD
-    file1="sense_2.py"
-    file2="sendfile_2.py"
-    file3="sw_update.sh"
-    file4="github_check_update.sh"
-    file5="server_stat.sh"
-    echo "Backing up current files.."
-    cp "$RUN_DIR/$file1" "$BKUP_DIR/$file1_$now"
-    cp "$RUN_DIR/$file2" "$BKUP_DIR/$file2_$now"
-    cp "$RUN_DIR/$file3" "$BKUP_DIR/$file3_$now"
-    cp "$RUN_DIR/$file4" "$BKUP_DIR/$file4_$now"
-    cp "$RUN_DIR/$file5" "$BKUP_DIR/$file5_$now"
-=======
     echo "Backing up current files.."
     cp "$RUN_DIR/$file1" "$BKUP_DIR/$file1-$now"
     cp "$RUN_DIR/$file2" "$BKUP_DIR/$file2-$now"
     #cp "$RUN_DIR/$file3" "$BKUP_DIR/$file3-$now"
     cp "$RUN_DIR/$file4" "$BKUP_DIR/$file4-$now"
     cp "$RUN_DIR/$file5" "$BKUP_DIR/$file5-$now"
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
     sleep 5s
     echo "Copying files to RUN directory.."
     cp "$SW_DIR/apps/sense/$file1" "$RUN_DIR/."
     cp "$SW_DIR/apps/sense/$file2" "$RUN_DIR/."
-<<<<<<< HEAD
-    cp "$SW_DIR/tools/$file3" "$RUN_DIR/."
-=======
     #cp "$SW_DIR/tools/$file3" "$RUN_DIR/."
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
     cp "$SW_DIR/tools/$file4" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file5" "$RUN_DIR/."
     echo "Files copied."
@@ -107,16 +79,3 @@ checkout_latest_master "apps"
 checkout_latest_master "tools"
 #checkout_latest_master "web"
 wait_and_copy
-<<<<<<< HEAD
-
-# Remove my home /tmp directory created by some of the installation
-# processes above.
-#if [ -d "/home/arkbg/dev/tmp" ]; then
-#    rm -rf "/home/arkbg/dev/tmp"
-#fi
-
-# Record the time so that I can see when was the last time I updated
-# all of these programs.
-echo "$(date)" > "$RUN_DIR/Update-Programs-Timestamp.txt"
-=======
->>>>>>> b23f393ac7758673e457eefcb2e0ac1e352b854e
