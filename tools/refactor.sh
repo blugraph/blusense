@@ -51,8 +51,8 @@ chown -R arkbg.pi *
 function clone_master() {
     echo "Cloning $1"
     cd "$SW_DIR" \
-        && git clone "https://github.com/jayachandranm/$1"
+        && git clone "https://github.com/blugraph/$1"
 }
 
-clone_master "bgsense"
-cp "$SW_DIR/bgsense/tools/check_update.sh" $RUN_DIR
+clone_master "blusense"
+cp "$SW_DIR/blusense/tools/check_update.sh" $RUN_DIR
