@@ -8,3 +8,4 @@ chmod a+x refactor.sh
 ./refactor.sh
 cd devsrc/blusense/tools
 chmod a+x *
+cd
