@@ -18,6 +18,7 @@ file2="sendfile.py"
 #file3="sw_update.sh"
 file4="check_update.sh"
 file5="server_stat.sh"
+#dir6="config"
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
@@ -69,6 +70,7 @@ function wait_and_copy() {
     echo "Copying files to RUN directory.."
     cp "$SW_DIR/apps/sense/$file1" "$RUN_DIR/."
     cp "$SW_DIR/apps/sense/$file2" "$RUN_DIR/."
+    cp -rf "$SW_DIR/apps/config" "$RUN_DIR/."
     #cp "$SW_DIR/tools/$file3" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file4" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file5" "$RUN_DIR/."
