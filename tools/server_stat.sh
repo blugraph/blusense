@@ -8,6 +8,7 @@ WPA_FILE="wpa_supplicant.conf"
 IDLINE="SVCSENSOR"
 #IDLINE="BGWIFI"
 STATUS_URL="http://52.74.191.39/BluIEQ/getstatus.php"
+DEV_FILE="dev_id.json"
 
 # Check server status, also used as HTTP keepalive for server. key=val
 #curl $STATUS_URL| sed 's/\(.*\)=\(.*\)/\1 \2/' | while read key val; do echo $key#$val; done
@@ -15,7 +16,12 @@ STATUS_URL="http://52.74.191.39/BluIEQ/getstatus.php"
 declare -A keyarray
 declare -A valarray
 
-dataFromServer=$(curl $STATUS_URL)
+dev_id_line=$(sed '2q;d' "$DEV_FILE")
+IFS=':' tokens=( $dev_id_line )
+
+STATUS_URL_ARG="$STATUS_URL?${tokens[1]}"
+
+dataFromServer=$(curl $STATUS_URL_ARG)
 echo "$dataFromServer"
 tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
 #echo "$tokens"
