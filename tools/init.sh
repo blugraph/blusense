@@ -28,8 +28,11 @@ wget https://raw.githubusercontent.com/blugraph/blusense/develop/tools/crontab
 #sudo chmod 644 /etc/networking.conf
 sudo chmod 644 /etc/crontab
 sudo mv crontab /etc/crontab
-sudo chown root.root crontab
+sudo chown root.root /etc/crontab
 
+wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/interfaces
+sudo chmod 644 /etc/interfaces
+sudo mv crontab /etc/interfaces
 #sudo mv networking.conf /etc/networking.conf
 #sudo chmod {444} /etc/networking.conf
 #sudo chmod {444} /etc/crontab
