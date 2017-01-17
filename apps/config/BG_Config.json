@@ -1,6 +1,6 @@
 {
 "DEVICE_ID":"MARPW001",
 "SERVER_ADDR":"52.220.188.123",
-"SERVER_PATH":"/BluIEQ/sensorstatus.php",
+"SERVER_PATH":"/BluIEQ/sensordata.php",
 "GETNET_PATH":"52.220.188.123/BluIEQ/sensorstatus.php"
 }
