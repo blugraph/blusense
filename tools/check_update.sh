@@ -9,6 +9,7 @@ TOOLS_DIR="$SW_DIR/tools"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
 BKUP_DIR="/home/arkbg/dev/bkup"
+CF_DIR="$RUN_DIR/config"
 
 # http://stackoverflow.com/questions/3258243/check-if-pull-needed-in-git
 # Before checking for updates, do a remote update.
