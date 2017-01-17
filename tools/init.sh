@@ -26,8 +26,8 @@ cd dev
 wget https://raw.githubusercontent.com/blugraph/blusense/develop/tools/crontab
 #wget {url}/networking.conf
 #sudo chmod 644 /etc/networking.conf
-sudo chmod 644 /etc/crontab
-sudo mv crontab crontab
+sudo chmod 644 crontab
+sudo mv crontab /etc/crontab
 sudo chown root.root /etc/crontab
 
 wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/interfaces
