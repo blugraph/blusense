@@ -20,3 +20,14 @@ chmod a+x refactor.sh
 cd devsrc/blusense/tools
 chmod a+x *
 cd
+cd dev
+# Replace crontab and network config files with new ones.
+#wget {url}/crontab
+#wget {url}/networking.conf
+#sudo chmod 644 /etc/networking.conf
+#sudo chmod 644 /etc/crontab
+#sudo mv crontab /etc/crontab
+#sudo mv networking.conf /etc/networking.conf
+#sudo chmod {444} /etc/networking.conf
+#sudo chmod {444} /etc/crontab
+#
