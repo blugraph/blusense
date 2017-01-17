@@ -10,6 +10,8 @@ SW_DIR="$RUN_DIR/devsrc"
 SW_DIR_BG="$RUN_DIR/github"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
+#Ullas added config directory
+CF_DIR="$RUN_DIR/config"
 
 # Do not allow the script to run as root.  
 if [ "$(id -u)" == "0" ]; then
@@ -45,6 +47,14 @@ if [[ ! -e $LOG_DIR ]]; then
 elif [[ ! -d $LOG_DIR ]]; then
   echo "$LOG_DIR already exists but is not a directory" 1>&2
 fi
+
+# Ullas added Congig directory option
+if [[ ! -e $CF_DIR ]]; then
+  mkdir -p $CF_DIR
+elif [[ ! -d $CF_DIR ]]; then
+  echo "$CF_DIR already exists but is not a directory" 1>&2
+fi
+
 # Some files may have root permissions. Change all to user perm.
 chown -R arkbg.pi *
 
