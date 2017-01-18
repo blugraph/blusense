@@ -27,12 +27,27 @@ bus = smbus.SMBus(1)
 # config params
 loop_time = 1
 num_samp_avg = 5
-dev_ID = "D1101"
+#dev_ID = "D1101"
+
+with open('/home/arkbg/dev/dev_id.json', 'r') as config_file:
+    # Convert JSON to DICT
+    config = json.load(config_file)
+print config['DEVICE_ID']
+dev_ID=config['DEVICE_ID']
+
+with open('/home/arkbg/dev/config/BG_Config.json', 'r') as config_file:
+    # Convert JSON to DICT
+    config = json.load(config_file)
+# Build destination server path
+SERVER_PATH = "http://" + config['SERVER_ADDR'] + config['SERVER_PATH']
+print SERVER_PATH
+SERVER_ADDR=config['SERVER_ADDR']
+
 #dev_ID = os.getenv("HOME")
 #print dev_ID
 #dev_ID = os.environ["BGDEV"]
 BACKLOG_BUFF_LEN = 59
-SERVER_ADDR = "172.18.53.42:81"
+#SERVER_ADDR = "172.18.53.42:81"
 #SERVER_ADDR = "52.74.191.39"
 RUN_DIR = "/home/arkbg/dev/"
 

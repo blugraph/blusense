@@ -25,6 +25,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 #The below are added for the software update functions
 * *    * * *   root     ./check_update.sh blusense
+* *
 #
 
 
