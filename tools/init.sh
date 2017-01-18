@@ -11,7 +11,7 @@ if [ -e dev_id.json ]; then
   rm dev_id.json
 fi
 echo "{" >> dev_id.json
-echo "DEVICE_ID:$1" >> dev_id.json
+#echo "DEVICE_ID:$1" >> dev_id.json
 echo "\"DEVICE_ID\":\"$1\"" >> dev_id.json
 echo "}" >> dev_id.json
 
