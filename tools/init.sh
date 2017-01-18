@@ -10,10 +10,11 @@ if [ -e dev_id.json ]; then
   echo "Delete existing dev_id.json file!"
   rm dev_id.json
 fi
-#echo "{" >> dev_id.json
-#echo "DEVICE_ID:$1" >> dev_id.json
-#echo "\"DEVICE_ID\":\"$1\"" >> dev_id.json
-#echo "}" >> dev_id.json
+echo "{" >> dev_id.json
+echo "DEVICE_ID:$1" >> dev_id.json
+echo "\"DEVICE_ID\":\"$1\"" >> dev_id.json
+echo "}" >> dev_id.json
+
 echo DEV_ID="$1" >> dev_id.conf
 #
 wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/refactor.sh
