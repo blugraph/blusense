@@ -23,10 +23,12 @@ STATUS_URL_ARG="$STATUS_URL?${tokens[1]}"
 
 dataFromServer=$(curl $STATUS_URL_ARG)
 echo "$dataFromServer"
-tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
+#tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
+tokens=$(sed 's/\(.*\)=\(.*\)#\(.*\)/\1 \2 \3/' <<< $dataFromServer)
 #echo "$tokens"
 index=0
-while read key val
+#while read key val
+while read key val ign
 do 
     #echo $key#$val
     keyarray[$index]=$key
