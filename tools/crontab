@@ -25,7 +25,7 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 #The below are added for the software update functions
 * *    * * *   arkbg     /home/arkbg/dev/check_update.sh blusense
-* *    * * *   root     /home/arkbg/dev/server_stat.sh
+#* *    * * *   root     /home/arkbg/dev/server_stat.sh
 #
 
 #
