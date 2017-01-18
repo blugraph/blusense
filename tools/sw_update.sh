@@ -11,7 +11,7 @@ RUN_DIR="/home/arkbg/dev"
 SW_DIR="$RUN_DIR/devsrc/$1"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
-CF_DIR="$RUN_DIR/confg"
+CF_DIR="$RUN_DIR/config"
    
 # Files to be copied to RUN_DIR 
 file1="sense.py"
