@@ -21,7 +21,7 @@ print config['DEVICE_ID']
 with open('/home/arkbg/dev/config/BG_Config.json', 'r') as config_file1:
     # Convert JSON to DICT
     config1 = json.load(config_file1)
-SERVER_PATH = "http://" + config['SERVER_ADDR']
+SERVER_PATH = "http://" + config['GETNET_PATH']
 print SERVER_PATH
 
 
