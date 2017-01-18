@@ -11,6 +11,7 @@ RUN_DIR="/home/arkbg/dev"
 SW_DIR="$RUN_DIR/devsrc/$1"
 BKUP_DIR="$RUN_DIR/bkup"
 LOG_DIR="$RUN_DIR/logs"
+CF_DIR="$RUN_DIR/confg"
    
 # Files to be copied to RUN_DIR 
 file1="sense.py"
@@ -20,6 +21,7 @@ file4="check_update.sh"
 file5="server_stat.sh"
 #dir6="config"
 file6="getnet.py"
+file7="BG_Config.json"
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
@@ -77,6 +79,8 @@ function wait_and_copy() {
     cp "$SW_DIR/tools/$file4" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file5" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file6" "$RUN_DIR/."
+    cp "$SW_DIR/tools/$file7" "$CF_DIR/."
+
     echo "Files copied."
 }
 
