@@ -15,7 +15,7 @@ with open('/home/arkbg/dev/dev_id.json', 'r') as config_file:
     # Convert JSON to DICT
     config = json.load(config_file)
 print config['DEVICE_ID']
-
+dev_ID=config['DEVICE_ID']
 
 # Build destination server path
 with open('/home/arkbg/dev/config/BG_Config.json', 'r') as config_file1:
