@@ -19,6 +19,9 @@ declare -A valarray
 dev_id_line=$(sed '2q;d' "$DEV_FILE")
 IFS=':' tokens=( $dev_id_line )
 
+# requires jq to be installed
+dev_id=$(cat "$DEV_FILE" | jq -r '.DEV_ID')
+
 STATUS_URL_ARG="$STATUS_URL?${tokens[1]}"
 
 dataFromServer=$(curl $STATUS_URL_ARG)
