@@ -14,17 +14,20 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 52 6    1 * *   root    test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 # Below related
 
-* *     * * *   arkbg    /home/arkbg/dev/sense.py >> /home/arkbg/dev/log/sense.log 2>&1
-* *     * * *   root    python /home/arkbg/dev/getnet.py
-0 */1     * * *   arkbg    python /home/arkbg/dev/sendfile.py >> /home/arkbg/dev/log/sendfile.log 2>&1
+#* *     * * *   root    sudo /home/arkbg/dev/senscron.sh >> /home/arkbg/dev/log/sense.log 2>&1
+* *     * * *   root    sudo /home/arkbg/dev/senscron.sh
+* *     * * *   root    sudo python /home/arkbg/dev/getnet.py
+0 */1     * * *   root    sudo python /home/arkbg/dev/sendfile_2.py >> /home/arkbg/dev/log/sendfile.log 2>&1
 #0 1     * * *   root    /home/arkbg/dev/log_upload.sh
 #*/5 *     * * *   root    sudo /usr/local/bin/WiFi_Check
 #*/5 *     * * *   root    sudo /usr/local/bin/wifi_reset.sh
-#0 0     * * *   root    sudo reboot
+0 0     * * *   root    sudo reboot
 
 #The below are added for the software update functions
 * *    * * *   arkbg     /home/arkbg/dev/check_update.sh blusense
 * *    * * *   root     /home/arkbg/dev/server_stat.sh
+#
+
 #
 # Testing when the changes appear on the system
 
