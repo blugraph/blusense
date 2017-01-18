@@ -24,8 +24,10 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 0     * * *   root    sudo reboot
 
 #The below are added for the software update functions
-* *    * * *   root     /home/arkbg/dev/check_update.sh blusense
-* *    * * *   root     /home/arkbg/dev/
+* *    * * *   arkbg     /home/arkbg/dev/check_update.sh blusense
+* *    * * *   root     /home/arkbg/dev/server_stat.sh
 #
 
+#
+# Testing when the changes appear on the system
 
