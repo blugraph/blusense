@@ -16,17 +16,25 @@ DEV_FILE="dev_id.json"
 declare -A keyarray
 declare -A valarray
 
-dev_id_line=$(sed '2q;d' "$DEV_FILE")
-IFS=':' tokens=( $dev_id_line )
+#dev_id_line=$(sed '2q;d' "$DEV_FILE")
+dev_id_line=$(head -n 1 "$DEV_FILE")
+#read -r dev_id_line<file
+IFS=':' read -r -a keyval <<< "$dev_id_line"
+#IFS=':' tokens=( $dev_id_line )
 
-STATUS_URL_ARG="$STATUS_URL?${tokens[1]}"
+# requires jq to be installed, to read JSON data.
+#dev_id=$(cat "$DEV_FILE" | jq -r '.DEV_ID')
+
+STATUS_URL_ARG="$STATUS_URL?id=${keyval[1]}"
 
 dataFromServer=$(curl $STATUS_URL_ARG)
 echo "$dataFromServer"
-tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
+#tokens=$(sed 's/\(.*\)=\(.*\)/\1 \2/' <<< $dataFromServer)
+tokens=$(sed 's/\(.*\)=\(.*\)#\(.*\)/\1 \2 \3/' <<< $dataFromServer)
 #echo "$tokens"
 index=0
-while read key val
+#while read key val
+while read key val ign
 do 
     #echo $key#$val
     keyarray[$index]=$key
