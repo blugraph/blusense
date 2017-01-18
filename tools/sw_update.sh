@@ -94,3 +94,5 @@ checkout_latest_master "apps"
 checkout_latest_master "tools"
 #checkout_latest_master "web"
 wait_and_copy
+
+sudo shutdown -r now 
