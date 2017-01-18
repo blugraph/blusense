@@ -79,7 +79,7 @@ function wait_and_copy() {
     cp "$SW_DIR/tools/$file4" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file5" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file6" "$RUN_DIR/."
-    cp "$SW_DIR/apps/sense/$file7" "$CF_DIR/."
+    cp "$SW_DIR/apps/config/$file7" "$CF_DIR/."
 
     echo "Files copied."
 }
