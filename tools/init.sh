@@ -32,7 +32,7 @@ sudo chown root.root /etc/crontab
 
 wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/interfaces
 sudo chmod 644 interfaces
-sudo mv interfaces /etc/interfaces
+sudo mv interfaces /etc/network/interfaces
 
 #sudo mv networking.conf /etc/networking.conf
 #sudo chmod {444} /etc/networking.conf
