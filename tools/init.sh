@@ -24,8 +24,6 @@ cd
 cd dev
 # Replace crontab and network config files with new ones.
 wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/crontab
-#wget {url}/networking.conf
-#sudo chmod 644 /etc/networking.conf
 sudo chmod 644 crontab
 sudo mv crontab /etc/crontab
 sudo chown root.root /etc/crontab
@@ -33,8 +31,4 @@ sudo chown root.root /etc/crontab
 wget https://raw.githubusercontent.com/blugraph/blusense/master/tools/interfaces
 sudo chmod 644 interfaces
 sudo mv interfaces /etc/network/interfaces
-
-#sudo mv networking.conf /etc/networking.conf
-#sudo chmod {444} /etc/networking.conf
-#sudo chmod {444} /etc/crontab
-#
+sudo chown root.root /etc/network/interfaces
