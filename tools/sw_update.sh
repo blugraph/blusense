@@ -22,6 +22,7 @@ file5="server_stat.sh"
 #dir6="config"
 file6="getnet.py"
 file7="BG_Config.json"
+file8="senscron.sh"
 
 # Do not allow the script to run as root.  Otherwise the programs
 # which have Git repositories will end up fetching and creating
@@ -70,6 +71,9 @@ function wait_and_copy() {
     mv "$RUN_DIR/$file4" "$BKUP_DIR/$file4-$now"
     mv "$RUN_DIR/$file5" "$BKUP_DIR/$file5-$now"
     mv "$RUN_DIR/$file6" "$BKUP_DIR/$file6-$now"
+    mv "$CF_DIR/$file7" "$BKUP_DIR/$file7-$now"
+    mv "$RUN_DIR/$file8" "$BKUP_DIR/$file8-$now"
+
     sleep 5s
     echo "Copying files to RUN directory.."
     cp "$SW_DIR/apps/sense/$file1" "$RUN_DIR/."
@@ -80,6 +84,7 @@ function wait_and_copy() {
     cp "$SW_DIR/tools/$file5" "$RUN_DIR/."
     cp "$SW_DIR/tools/$file6" "$RUN_DIR/."
     cp "$SW_DIR/apps/config/$file7" "$CF_DIR/."
+    cp "$SW_DIR/apps/sense/$file8" "$RUN_DIR/."
 
     echo "Files copied."
 }
