@@ -64,6 +64,7 @@ function configure_and_make() {
 function wait_and_copy() {
     now=`date +"%m_%d_%Y"`
     #
+
     echo "Backing up current files.."
     mv "$RUN_DIR/$file1" "$BKUP_DIR/$file1-$now"
     mv "$RUN_DIR/$file2" "$BKUP_DIR/$file2-$now"
