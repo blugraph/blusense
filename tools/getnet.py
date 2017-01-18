@@ -24,7 +24,6 @@ with open('/home/arkbg/dev/config/BG_Config.json', 'r') as config_file1:
 SERVER_PATH = "http://" + config1['GETNET_PATH']
 print SERVER_PATH
 
-
 tofile=[]
 
 from uuid import getnode as get_mac
