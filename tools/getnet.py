@@ -67,7 +67,7 @@ payload = {"deviceID":dev_ID, "ip": ip,"mac": mac, "status":state, "time":t}
 tofile.append(payload)
 
 try:
-  r1 = requests.put(SERVER_ADDR, data=json.dumps(tofile), timeout=0.1)
+  r1 = requests.put(SERVER_PATH, data=json.dumps(tofile), timeout=0.1)
   print t,r1.status_code,": server response."
   del tofile[:]
 except:
