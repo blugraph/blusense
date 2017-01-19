@@ -8,7 +8,8 @@ WPA_FILE="wpa_supplicant.conf"
 IDLINE="SVCSENSOR"
 #IDLINE="BGWIFI"
 STATUS_URL="http://52.74.191.39/BluIEQ/getstatus.php"
-DEV_FILE="dev_id.json"
+#DEV_FILE="dev_id.json"
+DEV_FILE="dev_id.conf"
 
 # Check server status, also used as HTTP keepalive for server. key=val
 #curl $STATUS_URL| sed 's/\(.*\)=\(.*\)/\1 \2/' | while read key val; do echo $key#$val; done
@@ -19,7 +20,7 @@ declare -A valarray
 #dev_id_line=$(sed '2q;d' "$DEV_FILE")
 dev_id_line=$(head -n 1 "$DEV_FILE")
 #read -r dev_id_line<file
-IFS=':' read -r -a keyval <<< "$dev_id_line"
+IFS='=' read -r -a keyval <<< "$dev_id_line"
 #IFS=':' tokens=( $dev_id_line )
 
 # requires jq to be installed, to read JSON data.
@@ -74,6 +75,4 @@ elif [ $key == "msg" ]; then
 else
     echo "Unknown key."
 fi
-
-
 
