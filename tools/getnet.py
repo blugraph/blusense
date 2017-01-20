@@ -47,7 +47,7 @@ def isThisRunning( process_name ):
   else:
     return True
 
-if isThisRunning('sense_2.py') == False:
+if isThisRunning('sense.py') == False:
   print("Not running")
   state="Not running"
 else:
