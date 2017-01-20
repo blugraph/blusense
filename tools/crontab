@@ -20,12 +20,13 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 0 */1     * * *   root    sudo python /home/arkbg/dev/sendfile_2.py >> /home/arkbg/dev/log/sendfile.log 2>&1
 #0 1     * * *   root    /home/arkbg/dev/log_upload.sh
 #*/5 *     * * *   root    sudo /usr/local/bin/WiFi_Check
-#*/5 *     * * *   root    sudo /usr/local/bin/wifi_reset.sh
+*/5 *     * * *   root    sudo /usr/local/bin/wifi_reset.sh
 0 0     * * *   root    sudo reboot
 
 #The below are added for the software update functions
 * *    * * *   arkbg     /home/arkbg/dev/check_update.sh blusense
-#* *    * * *   root     /home/arkbg/dev/server_stat.sh
+* *    * * *   root     sudo python /home/arkbg/dev/devsrc/blusense/tools/wifiup.py
+
 #
 
 #

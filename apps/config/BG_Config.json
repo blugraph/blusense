@@ -3,4 +3,5 @@
 "SERVER_ADDR":"52.220.188.123",
 "SERVER_PATH":"/BluIEQ/sensordata.php",
 "GETNET_PATH":"52.220.188.123/BluIEQ/sensorstatus.php"
+"WIFI_PATH":"52.220.188.123/BluIEQ/ptest.php"
 }
