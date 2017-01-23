@@ -14,6 +14,7 @@ DEV_FILE="dev_id.conf"
 # Check server status, also used as HTTP keepalive for server. key=val
 #curl $STATUS_URL| sed 's/\(.*\)=\(.*\)/\1 \2/' | while read key val; do echo $key#$val; done
 
+#
 declare -A keyarray
 declare -A valarray
 
